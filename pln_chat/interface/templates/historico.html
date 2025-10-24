@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Interações</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="history-container">
+        <header class="chat-header">
+            <h1>📜 Histórico de Conversas</h1>
+            <a href="{% url 'chat' %}" class="back-btn">⬅️ Voltar ao Chat</a>
+        </header>
+
+        <div class="filters">
+            <input type="text" id="filter-input" placeholder="Filtrar por palavra-chave...">
+            <button id="filter-btn">Filtrar</button>
+            <button id="export-csv">Exportar CSV</button>
+            <button id="export-json">Exportar JSON</button>
+        </div>
+
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Prompt</th>
+                    <th>Resposta</th>
+                    <th>Modelo</th>
+                </tr>
+            </thead>
+            <tbody id="history-body">
+                <!-- Conteúdo gerado via JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{% static 'js/historico.js' %}"></script>
+</body>
+</html>

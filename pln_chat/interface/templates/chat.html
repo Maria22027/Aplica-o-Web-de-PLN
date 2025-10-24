@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de PLN</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>🤖 Chat de PLN</h1>
+            <a href="{% url 'historico' %}" class="history-btn">📜 Histórico</a>
+        </header>
+
+        <div id="chat-box" class="chat-box">
+            <div class="msg bot">Olá! Envie uma mensagem para começar 😊</div>
+        </div>
+
+        <form id="chat-form" class="chat-input">
+            <input type="text" id="user-input" placeholder="Digite sua mensagem..." autocomplete="off">
+            <button type="submit" id="send-btn">Enviar</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/chat.js' %}"></script>
+</body>
+</html>
