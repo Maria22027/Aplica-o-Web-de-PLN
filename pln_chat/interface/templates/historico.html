@@ -3,7 +3,6 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Interações</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -11,31 +10,25 @@
     <div class="history-container">
         <header class="chat-header">
             <h1>📜 Histórico de Conversas</h1>
-            <a href="{% url 'chat' %}" class="back-btn">⬅️ Voltar ao Chat</a>
+            <a href="{% url 'chat' %}" class="history-btn">⬅ Voltar ao Chat</a>
         </header>
 
-        <div class="filters">
-            <input type="text" id="filter-input" placeholder="Filtrar por palavra-chave...">
-            <button id="filter-btn">Filtrar</button>
-            <button id="export-csv">Exportar CSV</button>
-            <button id="export-json">Exportar JSON</button>
+        <div class="history-box">
+            {% for chat in chats %}
+                <div class="history-item">
+                    <p><b>🧍 Você:</b> {{ chat.prompt }}</p>
+                    <p><b>🤖 Bot:</b> {{ chat.response }}</p>
+                    <small>{{ chat.timestamp }}</small>
+                </div>
+            {% empty %}
+                <p>Nenhuma conversa registrada ainda.</p>
+            {% endfor %}
         </div>
 
-        <table class="history-table">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Prompt</th>
-                    <th>Resposta</th>
-                    <th>Modelo</th>
-                </tr>
-            </thead>
-            <tbody id="history-body">
-                <!-- Conteúdo gerado via JS -->
-            </tbody>
-        </table>
+        <footer>
+            <a href="{% url 'export_json' %}">💾 Exportar JSON</a> |
+            <a href="{% url 'export_csv' %}">📊 Exportar CSV</a>
+        </footer>
     </div>
-
-    <script src="{% static 'js/historico.js' %}"></script>
 </body>
 </html>
