@@ -1,0 +1,12 @@
+
+cd pln_chat
+
+# 2. Criar e ativar ambiente virtual
+python -m venv venv
+
+# Ativar no Windows:
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python manage.py runserver
